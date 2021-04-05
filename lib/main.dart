@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Product Sans',
       ),
       debugShowCheckedModeBanner: false,
-      // home: MyHomePage(),
-      home: TimelinePage(),
+      home: MyHomePage(),
+      // home: TimelinePage(),
     );
   }
 }

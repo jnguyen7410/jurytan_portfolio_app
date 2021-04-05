@@ -1,8 +1,13 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:jurytan_portfolio_app/utilities/constants.dart';
 import 'package:jurytan_portfolio_app/widgets/fancy_navigation_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatelessWidget {
+  void _launchURL(String url) async => await launch(url);
+  // await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +37,7 @@ class MyHomePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 9),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
                           'Jonathan Nguyen',
@@ -57,6 +63,73 @@ class MyHomePage extends StatelessWidget {
               child: Container(
                 decoration: kRoundedTopDecoration,
                 width: double.infinity,
+                padding: EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 24.0,
+                          left: 16.0,
+                        ),
+                        child: Text(
+                          'Hi there!',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 32,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                      ),
+                      child: Text(
+                        "I'm Jonathan and I'm a software engineer at Google. Check out my stuff below!",
+                        style: TextStyle(
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 20.0,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          OutlinedButton(
+                            onPressed: () {
+                              _launchURL('https://github.com/jnguyen7410');
+                            },
+                            child: Text(
+                              'GITHUB',
+                            ),
+                          ),
+                          OutlinedButton(
+                            onPressed: () {
+                              _launchURL('https://bit.ly/jnguyenLI');
+                            },
+                            child: Text(
+                              'LINKEDIN',
+                            ),
+                          ),
+                          OutlinedButton(
+                            onPressed: () {
+                              _launchURL('http://nguyeningcode.com');
+                            },
+                            child: Text(
+                              'PORTFOLIO',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           ],
